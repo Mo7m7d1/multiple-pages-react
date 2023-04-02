@@ -1,0 +1,48 @@
+.gallery {
+	padding: var(--main-padding-top) 0;
+	position: relative;
+	background-color: var(--section-background);
+}
+
+.gallery .container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 40px;
+}
+
+.gallery .box {
+	box-shadow: 0 2px 15px rgb(0 0 0 / 13%), 0 2px 4px 0px rgb(0 0 0 / 12%);
+	padding: 15px;
+	background-color: white;
+}
+
+.gallery .box .image {
+	position: relative;
+	overflow: hidden;
+}
+
+.gallery .box .image::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgba(255, 255, 255, 0.2);
+	width: 0;
+	height: 0;
+	opacity: 0;
+	z-index: 2;
+}
+
+.gallery .box .image:hover::before {
+	animation: flashing 0.7s;
+}
+
+.gallery .box img {
+	max-width: 100%;
+	transition: var(--main-transition);
+}
+
+.gallery .box .image:hover img {
+	transform: rotate(5deg) scale(1.1);
+}
